@@ -40,3 +40,11 @@ Thumbs.db
 
 .nx/cache
 .nx/workspace-data
+
+
+# Maven
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+!.mvn/wrapper/maven-wrapper.jar
+.m2/repository
