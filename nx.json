@@ -6,6 +6,42 @@
     "production": ["default", "!{projectRoot}/src/test/**/*"],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
+  "targetDefaults": {
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "maven-checkstyle-lint": {
+      "cache": true,
+      "dependsOn": [
+        {
+          "projects": ["build-tools-checkstyle"],
+          "target": "build"
+        }
+      ]
+    },
+    "maven-pmd-check": {
+      "cache": true,
+      "dependsOn": [
+        {
+          "projects": ["build-tools-pmd"],
+          "target": "build"
+        }
+      ]
+    },
+    "target-with-outputDirLocalRepo": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "outputs": [
+        "{projectRoot}/target",
+        "{options.outputDirLocalRepo}",
+        "{projectRoot}/.flattened-pom.xml"
+      ],
+      "options": {
+        "task": "install -DskipTests=true"
+      }
+    }
+  },
   "plugins": [
     {
       "plugin": "@nx/js/typescript",
