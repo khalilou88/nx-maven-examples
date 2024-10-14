@@ -9,12 +9,10 @@
   <version>${revision}</version>
   <name>Build Tools PMD</name>
 
-
   <parent>
     <groupId>com.example</groupId>
     <artifactId>properties-parent-project</artifactId>
     <version>${revision}</version>
     <relativePath>../../properties-parent-project/pom.xml</relativePath>
   </parent>
-
 </project>

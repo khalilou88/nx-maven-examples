@@ -6,8 +6,7 @@
   "targets": {
     "build": {
       "executor": "@jnxplus/nx-maven:run-task",
-      "outputs": ["{projectRoot}/target",
-      "{projectRoot}/.flattened-pom.xml"],
+      "outputs": ["{projectRoot}/target", "{projectRoot}/.flattened-pom.xml"],
       "options": {
         "task": "install"
       }

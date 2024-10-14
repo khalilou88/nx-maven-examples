@@ -11,15 +11,12 @@
   <name>parent-project</name>
   <description>This project was generated with nx-maven</description>
 
-
-
   <parent>
     <groupId>com.example</groupId>
     <artifactId>properties-parent-project</artifactId>
     <version>${revision}</version>
     <relativePath>../properties-parent-project/pom.xml</relativePath>
   </parent>
-
 
   <build>
     <plugins>
@@ -68,12 +65,12 @@
             <configuration>
               <target name="ktlint">
                 <java
-                        taskname="ktlint"
-                        dir="${basedir}"
-                        fork="true"
-                        failonerror="true"
-                        classpathref="maven.plugin.classpath"
-                        classname="com.pinterest.ktlint.Main"
+                  taskname="ktlint"
+                  dir="${basedir}"
+                  fork="true"
+                  failonerror="true"
+                  classpathref="maven.plugin.classpath"
+                  classname="com.pinterest.ktlint.Main"
                 >
                   <jvmarg value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
                   <!-- see https://pinterest.github.io/ktlint/install/cli/#command-line-usage for more information -->
@@ -90,12 +87,12 @@
             <configuration>
               <target name="ktlint">
                 <java
-                        taskname="ktlint"
-                        dir="${basedir}"
-                        fork="true"
-                        failonerror="true"
-                        classpathref="maven.plugin.classpath"
-                        classname="com.pinterest.ktlint.Main"
+                  taskname="ktlint"
+                  dir="${basedir}"
+                  fork="true"
+                  failonerror="true"
+                  classpathref="maven.plugin.classpath"
+                  classname="com.pinterest.ktlint.Main"
                 >
                   <jvmarg value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
                   <!-- see https://pinterest.github.io/ktlint/install/cli/#command-line-usage for more information -->
@@ -119,5 +116,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

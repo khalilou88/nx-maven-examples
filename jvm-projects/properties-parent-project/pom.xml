@@ -12,7 +12,6 @@
   <name>version-parent-project</name>
   <description>This project was generated with nx-maven</description>
 
-
   <properties>
     <revision>0.0.0</revision>
     <java.version>17</java.version>
@@ -22,7 +21,6 @@
     <quarkus.version>3.5.3</quarkus.version>
     <maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
   </properties>
-
 
   <build>
     <plugins>
@@ -53,5 +51,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

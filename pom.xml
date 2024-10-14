@@ -38,8 +38,5 @@
     <module>jvm-projects/spring-boot/m-sb-lib</module>
     <module>jvm-projects/spring-boot/m-sb-kt-app</module>
     <module>jvm-projects/spring-boot/m-sb-kt-lib</module>
-
-
   </modules>
-
 </project>
