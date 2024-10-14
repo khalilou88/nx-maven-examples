@@ -6,7 +6,7 @@
     <groupId>com.example</groupId>
     <artifactId>parent-project</artifactId>
     <version>0.0.0</version>
-    <relativePath>../../pom.xml</relativePath>
+    <relativePath>../../parent-project/pom.xml</relativePath>
   </parent>
   <groupId>com.example</groupId>
   <artifactId>m-q-parent-project</artifactId>
@@ -14,12 +14,6 @@
   <packaging>pom</packaging>
   <name>m-q-parent-project</name>
   <description>This project was generated with nx-maven</description>
-  <modules>
-    <module>../m-q-app</module>
-    <module>../m-q-lib</module>
-    <module>../m-q-kt-app</module>
-    <module>../m-q-kt-lib</module>
-  </modules>
   <properties>
     <maven.compiler.release>${java.version}</maven.compiler.release>
     <maven-failsafe-plugin.version>3.0.0</maven-failsafe-plugin.version>
