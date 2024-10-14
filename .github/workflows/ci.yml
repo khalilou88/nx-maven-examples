@@ -12,7 +12,18 @@ permissions:
 
 jobs:
   main:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        node_version: [ "20" ]
+        java: [ "17" ]
+      fail-fast: false
+    env:
+      NX_VERBOSE_LOGGING: "true"
+      NX_MAVEN_CLI_OPTS: "--no-transfer-progress -Dmaven.plugin.validation=VERBOSE"
+    runs-on: ${{ matrix.os }}
+
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,14 +32,14 @@ jobs:
       # Cache node_modules
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ matrix.node_version }}
           cache: 'npm'
 
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
-          java-version: 17
+          java-version: ${{ matrix.java }}
 
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
