@@ -60,6 +60,7 @@
       "options": {
         "localRepoRelativePath": ".m2/repository",
         "graphOptions": {
+          "skipProjectWithoutProjectJson": true,
           "skipAggregatorProjectLinking": true
         }
       }
