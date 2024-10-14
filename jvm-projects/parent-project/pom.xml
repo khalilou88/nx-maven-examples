@@ -12,12 +12,6 @@
   <name>parent-project</name>
   <description>This project was generated with nx-maven</description>
 
-  <parent>
-    <groupId>com.example</groupId>
-    <artifactId>root-aggregator-project</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../../pom.xml</relativePath>
-  </parent>
 
   <properties>
     <java.version>17</java.version>
