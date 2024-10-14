@@ -1,0 +1,42 @@
+{
+  "name": "m-m-app",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "./jvm-projects/micronaut/m-m-app/src",
+  "targets": {
+    "build": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "outputs": ["{projectRoot}/target", "{projectRoot}/.flattened-pom.xml"],
+      "options": {
+        "task": "compile -DskipTests=true"
+      }
+    },
+    "build-image": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "options": {
+        "task": "package -Dpackaging=docker"
+      }
+    },
+    "serve": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "options": {
+        "task": "mn:run"
+      },
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "options": {
+        "task": "test"
+      },
+      "dependsOn": ["^build"]
+    },
+    "maven-checkstyle-lint": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "options": {
+        "task": "checkstyle:check"
+      }
+    }
+  },
+  "tags": []
+}

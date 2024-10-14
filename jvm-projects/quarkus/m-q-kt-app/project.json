@@ -1,0 +1,53 @@
+{
+  "name": "m-q-kt-app",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "./jvm-projects/quarkus/m-q-kt-app/src",
+  "targets": {
+    "build": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "outputs": ["{projectRoot}/target", "{projectRoot}/.flattened-pom.xml"],
+      "options": {
+        "task": "compile -DskipTests=true"
+      }
+    },
+    "build-image": {
+      "executor": "@jnxplus/nx-maven:quarkus-build-image"
+    },
+    "serve": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "options": {
+        "task": "quarkus:dev"
+      },
+      "dependsOn": ["build"]
+    },
+    "test": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "options": {
+        "task": "test"
+      },
+      "dependsOn": ["build"]
+    },
+    "integration-test": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "options": {
+        "task": "integration-test"
+      }
+    },
+    "ktlint": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "options": {
+        "task": "antrun:run@ktlint"
+      },
+      "dependsOn": ["^build"]
+    },
+    "ktlint-format": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "options": {
+        "task": "antrun:run@ktlint-format"
+      },
+      "dependsOn": ["^build"]
+    }
+  },
+  "tags": []
+}

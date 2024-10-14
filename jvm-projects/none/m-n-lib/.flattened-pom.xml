@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>ma.example</groupId>
+    <artifactId>m-n-parent-project</artifactId>
+    <version>0.0.1-DEV</version>
+    <relativePath>../m-n-parent-project/pom.xml</relativePath>
+  </parent>
+  <groupId>fr.example</groupId>
+  <artifactId>m-n-lib</artifactId>
+  <version>1.2.3</version>
+  <name>m-n-lib</name>
+  <description>This project was generated with nx-maven</description>
+  <properties>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <my.version>1.2.3</my.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.10.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

@@ -1,0 +1,16 @@
+{
+  "name": "build-tools-pmd",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "./jvm-projects/build-tools/build-tools-pmd/src",
+  "targets": {
+    "build": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "outputs": ["{projectRoot}/target", "{options.outputDirLocalRepo}"],
+      "options": {
+        "task": "install"
+      }
+    }
+  },
+  "tags": []
+}

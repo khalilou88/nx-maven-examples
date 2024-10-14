@@ -1,0 +1,42 @@
+{
+  "name": "m-sb-lib",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "./jvm-projects/spring-boot/m-sb-lib/src",
+  "targets": {
+    "build": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "outputs": [
+        "{projectRoot}/target",
+        "{options.outputDirLocalRepo}",
+        "{projectRoot}/.flattened-pom.xml"
+      ],
+      "options": {
+        "task": "install -DskipTests=true"
+      }
+    },
+    "target-with-outputDirLocalRepo": {
+      "executor": "@jnxplus/nx-maven:run-task"
+    },
+    "test": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "options": {
+        "task": "test"
+      },
+      "dependsOn": ["^build"]
+    },
+    "maven-checkstyle-lint": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "options": {
+        "task": "checkstyle:check"
+      }
+    },
+    "maven-pmd-check": {
+      "executor": "@jnxplus/nx-maven:run-task",
+      "options": {
+        "task": "pmd:check"
+      }
+    }
+  },
+  "tags": []
+}

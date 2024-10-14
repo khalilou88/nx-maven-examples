@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>properties-parent-project</artifactId>
+  <version>${revision}</version>
+  <packaging>pom</packaging>
+  <name>version-parent-project</name>
+  <description>This project was generated with nx-maven</description>
+
+
+  <properties>
+    <revision>0.0.0</revision>
+    <java.version>17</java.version>
+    <kotlin.version>1.9.20</kotlin.version>
+    <spring.boot.version>3.2.0</spring.boot.version>
+    <micronaut.version>4.2.0</micronaut.version>
+    <quarkus.version>3.5.3</quarkus.version>
+    <maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
+  </properties>
+
+</project>

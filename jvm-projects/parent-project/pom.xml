@@ -5,16 +5,145 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
 >
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.example</groupId>
   <artifactId>parent-project</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>${revision}</version>
   <packaging>pom</packaging>
   <name>parent-project</name>
   <description>This project was generated with nx-maven</description>
 
 
-  <properties>
-    <java.version>17</java.version>
-  </properties>
+
+  <parent>
+    <groupId>com.example</groupId>
+    <artifactId>properties-parent-project</artifactId>
+    <version>${revision}</version>
+    <relativePath>../properties-parent-project/pom.xml</relativePath>
+  </parent>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <version>1.5.0</version>
+        <configuration>
+          <updatePomFile>true</updatePomFile>
+          <flattenMode>resolveCiFriendliesOnly</flattenMode>
+        </configuration>
+        <executions>
+          <execution>
+            <id>flatten</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>flatten</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>flatten.clean</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>${maven-checkstyle-plugin.version}</version>
+        <dependencies>
+          <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>build-tools-checkstyle</artifactId>
+            <version>${revision}</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <configLocation>checkstyle.xml</configLocation>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>${revision}</version>
+        <configuration>
+          <rulesets>
+            <ruleset>pmd-ruleset.xml</ruleset>
+          </rulesets>
+          <printFailingErrors>true</printFailingErrors>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>build-tools-pmd</artifactId>
+            <version>1.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>ktlint</id>
+            <configuration>
+              <target name="ktlint">
+                <java
+                        taskname="ktlint"
+                        dir="${basedir}"
+                        fork="true"
+                        failonerror="true"
+                        classpathref="maven.plugin.classpath"
+                        classname="com.pinterest.ktlint.Main"
+                >
+                  <jvmarg value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
+                  <!-- see https://pinterest.github.io/ktlint/install/cli/#command-line-usage for more information -->
+                  <arg value="src/**/*.kt" />
+                </java>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>ktlint-format</id>
+            <configuration>
+              <target name="ktlint">
+                <java
+                        taskname="ktlint"
+                        dir="${basedir}"
+                        fork="true"
+                        failonerror="true"
+                        classpathref="maven.plugin.classpath"
+                        classname="com.pinterest.ktlint.Main"
+                >
+                  <jvmarg value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
+                  <!-- see https://pinterest.github.io/ktlint/install/cli/#command-line-usage for more information -->
+                  <arg value="-F" />
+                  <arg value="src/**/*.kt" />
+                </java>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>com.pinterest.ktlint</groupId>
+            <artifactId>ktlint-cli</artifactId>
+            <version>1.1.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
