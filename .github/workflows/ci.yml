@@ -47,5 +47,7 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
 
+      - run: npx nx build m-sb-app
+
       - run: npx nx run-many -t build --parallel --skip-nx-cache
 
