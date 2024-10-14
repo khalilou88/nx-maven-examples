@@ -23,6 +23,7 @@ jobs:
       fail-fast: false
     env:
       NX_VERBOSE_LOGGING: "true"
+      NX_MAVEN_CLI: "mvn"
       NX_MAVEN_CLI_OPTS: "--no-transfer-progress -Dmaven.plugin.validation=VERBOSE"
     runs-on: ${{ matrix.os }}
 
@@ -43,6 +44,11 @@ jobs:
         with:
           distribution: "temurin"
           java-version: ${{ matrix.java }}
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.9
 
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
