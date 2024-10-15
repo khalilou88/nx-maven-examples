@@ -44,10 +44,10 @@ jobs:
           distribution: "temurin"
           java-version: ${{ matrix.java }}
 
-      - run: npm ci --legacy-peer-deps
+      - run: npm i
       - uses: nrwl/nx-set-shas@v4
 
       - run: npx nx build m-sb-app
 
-      - run: npx nx run-many -t build --parallel --skip-nx-cache
+      - run: npx nx run-many -t build --parallel
 
